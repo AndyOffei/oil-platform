@@ -12,6 +12,7 @@ import {
   TrendingUp, Globe2, BarChart3, Zap,
 } from "lucide-react";
 import { useAuthStore } from "@/lib/authStore";
+import { Eye as EyeIcon } from "lucide-react";
 
 /* ── animated counter ── */
 function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
@@ -38,9 +39,9 @@ const STATS = [
 ];
 
 const ROLES = [
-  { label: "Super Admin",   email: "admin@oilintel.com",     color: "#f59e0b", bg: "rgba(245,158,11,0.1)",  border: "rgba(245,158,11,0.25)" },
-  { label: "Analyst",       email: "j.okafor@oilintel.com",  color: "#06b6d4", bg: "rgba(6,182,212,0.1)",   border: "rgba(6,182,212,0.25)"  },
-  { label: "Sales Manager", email: "a.hassan@oilintel.com",  color: "#a78bfa", bg: "rgba(167,139,250,0.1)", border: "rgba(167,139,250,0.25)" },
+  { label: "Super Admin",   email: "admin@oilintel.com",    color: "#f59e0b", bg: "rgba(245,158,11,0.1)",  border: "rgba(245,158,11,0.25)" },
+  { label: "Manager",       email: "a.hassan@oilintel.com", color: "#a78bfa", bg: "rgba(167,139,250,0.1)", border: "rgba(167,139,250,0.25)" },
+  { label: "Analyst",       email: "j.okafor@oilintel.com", color: "#06b6d4", bg: "rgba(6,182,212,0.1)",   border: "rgba(6,182,212,0.25)"  },
 ];
 
 /* ── floating particle ── */
@@ -125,7 +126,7 @@ function Field({
 
 export default function LoginPage() {
   const router = useRouter();
-  const { login, isAuthenticated, hydrate } = useAuthStore();
+  const { login, loginAsGuest, isAuthenticated, hydrate } = useAuthStore();
   const [email, setEmail]       = useState("admin@oilintel.com");
   const [password, setPassword] = useState("password");
   const [showPass, setShowPass] = useState(false);
@@ -419,7 +420,7 @@ export default function LoginPage() {
                 <motion.div
                   initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4, duration: 0.45 }}
-                  className="pt-1"
+                  className="pt-1 space-y-3"
                 >
                   <motion.button
                     type="submit"
@@ -428,9 +429,7 @@ export default function LoginPage() {
                     whileTap={!loading ? { scale: 0.98 } : {}}
                     className="w-full py-3.5 rounded-xl text-sm font-bold flex items-center justify-center gap-2.5 transition-all"
                     style={{
-                      background: loading
-                        ? "rgba(6,182,212,0.3)"
-                        : "linear-gradient(135deg, #06b6d4 0%, #0284c7 100%)",
+                      background: loading ? "rgba(6,182,212,0.3)" : "linear-gradient(135deg, #06b6d4 0%, #0284c7 100%)",
                       color: "#fff",
                       cursor: loading ? "not-allowed" : "pointer",
                       boxShadow: loading ? "none" : "0 4px 20px rgba(6,182,212,0.3)",
@@ -442,6 +441,27 @@ export default function LoginPage() {
                     ) : (
                       <><span>Sign In</span><ArrowRight size={15} /></>
                     )}
+                  </motion.button>
+
+                  {/* Guest access */}
+                  <motion.button
+                    type="button"
+                    onClick={() => { loginAsGuest(); router.replace("/dashboard"); }}
+                    whileHover={{ scale: 1.01 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="w-full py-3 rounded-xl text-sm font-medium flex items-center justify-center gap-2 transition-all"
+                    style={{
+                      background: "rgba(255,255,255,0.03)",
+                      border: "1px solid rgba(71,85,105,0.5)",
+                      color: "#64748b",
+                    }}
+                  >
+                    <EyeIcon size={14} />
+                    Continue as Guest
+                    <span className="text-xs px-1.5 py-0.5 rounded-full ml-1"
+                      style={{ background: "rgba(100,116,139,0.15)", color: "#475569" }}>
+                      Read-only
+                    </span>
                   </motion.button>
                 </motion.div>
               </div>

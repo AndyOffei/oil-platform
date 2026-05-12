@@ -7,8 +7,11 @@ import {
   Users, Shield, Database, CheckCircle2, Plus, Edit2,
   Trash2, ToggleLeft, ToggleRight, X, Key, Loader2,
 } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { api } from "@/lib/api";
 import { TableSkeleton } from "@/components/skeletons/Skeleton";
+import { useAuthStore } from "@/lib/authStore";
+import { canManageUsers } from "@/lib/permissions";
 
 interface User {
   id: string; name: string; email: string; role: string;
@@ -120,6 +123,14 @@ function AddUserModal({ onClose, onCreated }: { onClose: () => void; onCreated: 
 }
 
 export default function AdminPage() {
+  const router = useRouter();
+  const { user } = useAuthStore();
+
+  // Redirect non-admins immediately
+  useEffect(() => {
+    if (user && !canManageUsers(user.role)) router.replace("/dashboard");
+  }, [user, router]);
+
   const [activeTab, setActiveTab]   = useState("users");
   const [users, setUsers]           = useState<User[]>([]);
   const [loadingUsers, setLoadingUsers] = useState(true);
