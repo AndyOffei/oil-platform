@@ -243,7 +243,7 @@ export default function LoginPage() {
           <motion.p
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.65, duration: 0.5 }}
-            className="text-base leading-relaxed mb-12 max-w-md"
+            className="text-base leading-relaxed mb-8 max-w-md"
             style={{ color: "#475569" }}
           >
             Real-time production analytics, AI price forecasting, and end-to-end
@@ -251,7 +251,7 @@ export default function LoginPage() {
           </motion.p>
 
           {/* Stats grid */}
-          <div className="grid grid-cols-2 gap-5 mb-12">
+          <div className="grid grid-cols-2 gap-4 mb-8">
             {STATS.map((s, i) => (
               <motion.div
                 key={s.label}
@@ -322,14 +322,14 @@ export default function LoginPage() {
           RIGHT  —  Login Form
       ═══════════════════════════════════════ */}
       <div
-        className="flex-1 flex items-center justify-center px-5 py-10 relative"
+        className="flex-1 flex items-center justify-center px-6 py-8 relative overflow-y-auto"
         style={{ background: "linear-gradient(160deg, #05090f 0%, #060b14 100%)" }}
       >
         {/* Soft radial glow behind the card */}
         <div className="absolute inset-0 pointer-events-none"
           style={{ background: "radial-gradient(ellipse 70% 55% at 50% 45%, rgba(6,182,212,0.05) 0%, transparent 70%)" }} />
 
-        <div className="relative z-10 w-full" style={{ maxWidth: "420px" }}>
+        <div className="relative z-10 w-full" style={{ maxWidth: "440px" }}>
 
           {/* Mobile logo */}
           <motion.div
@@ -349,7 +349,7 @@ export default function LoginPage() {
             initial={{ opacity: 0, y: 32, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="rounded-2xl p-8"
+            className="rounded-2xl p-7"
             style={{
               background: "rgba(13,22,40,0.95)",
               border: "1px solid rgba(30,58,95,0.7)",
@@ -361,7 +361,7 @@ export default function LoginPage() {
             <motion.div
               initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.15, duration: 0.4 }}
-              className="mb-8"
+              className="mb-6"
             >
               <h2 className="text-2xl font-bold mb-1.5" style={{ color: "#f1f5f9", letterSpacing: "-0.02em" }}>
                 Welcome back
@@ -388,7 +388,7 @@ export default function LoginPage() {
             </AnimatePresence>
 
             <form onSubmit={handleSubmit}>
-              <div className="space-y-5">
+              <div className="space-y-4">
                 {/* Email field */}
                 <Field
                   label="Email Address"
@@ -420,7 +420,7 @@ export default function LoginPage() {
                 <motion.div
                   initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4, duration: 0.45 }}
-                  className="pt-1 space-y-3"
+                  className="pt-1 space-y-2.5"
                 >
                   <motion.button
                     type="submit"
@@ -471,7 +471,7 @@ export default function LoginPage() {
             <motion.div
               initial={{ opacity: 0 }} animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
-              className="flex items-center gap-3 my-6"
+              className="flex items-center gap-3 my-4"
             >
               <div className="flex-1 h-px" style={{ background: "rgba(30,58,95,0.6)" }} />
               <span className="text-xs font-medium px-1" style={{ color: "#1e3a5f" }}>Quick Access</span>
@@ -485,9 +485,9 @@ export default function LoginPage() {
                   key={r.email}
                   initial={{ opacity: 0, x: -12 }} animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.55 + i * 0.08, duration: 0.35 }}
-                  whileHover={{ x: 4, backgroundColor: "rgba(255,255,255,0.03)" }}
+                  whileHover={{ x: 3, backgroundColor: "rgba(255,255,255,0.03)" }}
                   onClick={() => { setEmail(r.email); setPassword("password"); setError(""); }}
-                  className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-left transition-colors"
+                  className="w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-left transition-colors"
                   style={{ background: "rgba(15,23,42,0.6)", border: `1px solid ${r.border}` }}
                 >
                   <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 text-xs font-bold"
@@ -495,8 +495,8 @@ export default function LoginPage() {
                     {r.avatar}
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-semibold" style={{ color: "#e2e8f0" }}>{r.label}</p>
-                    <p className="text-xs truncate" style={{ color: r.color, opacity: 0.7 }}>{r.sublabel}</p>
+                    <p className="text-sm font-semibold leading-tight" style={{ color: "#e2e8f0" }}>{r.label}</p>
+                    <p className="text-xs mt-0.5" style={{ color: r.color, opacity: 0.7 }}>{r.sublabel}</p>
                   </div>
                   <ArrowRight size={13} style={{ color: r.color, opacity: 0.7 }} />
                 </motion.button>
@@ -507,7 +507,7 @@ export default function LoginPage() {
             <motion.p
               initial={{ opacity: 0 }} animate={{ opacity: 1 }}
               transition={{ delay: 0.85 }}
-              className="text-center mt-6 text-xs"
+              className="text-center mt-4 text-xs"
               style={{ color: "#1e3a5f" }}
             >
               All demo accounts use password:{" "}
