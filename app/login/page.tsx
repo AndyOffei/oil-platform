@@ -39,9 +39,9 @@ const STATS = [
 ];
 
 const ROLES = [
-  { label: "Super Admin",   email: "admin@oilintel.com",    color: "#f59e0b", bg: "rgba(245,158,11,0.1)",  border: "rgba(245,158,11,0.25)" },
-  { label: "Manager",       email: "a.hassan@oilintel.com", color: "#a78bfa", bg: "rgba(167,139,250,0.1)", border: "rgba(167,139,250,0.25)" },
-  { label: "Analyst",       email: "j.okafor@oilintel.com", color: "#06b6d4", bg: "rgba(6,182,212,0.1)",   border: "rgba(6,182,212,0.25)"  },
+  { label: "Bright Offei",    sublabel: "Super Admin",  email: "admin@oilintel.com",    color: "#f59e0b", bg: "rgba(245,158,11,0.1)",  border: "rgba(245,158,11,0.25)", avatar: "BO" },
+  { label: "Gloria Gyamfuah", sublabel: "Manager",      email: "a.hassan@oilintel.com", color: "#a78bfa", bg: "rgba(167,139,250,0.1)", border: "rgba(167,139,250,0.25)", avatar: "GG" },
+  { label: "John Okafor",     sublabel: "Analyst",      email: "j.okafor@oilintel.com", color: "#06b6d4", bg: "rgba(6,182,212,0.1)",   border: "rgba(6,182,212,0.25)",  avatar: "JO" },
 ];
 
 /* ── floating particle ── */
@@ -492,11 +492,11 @@ export default function LoginPage() {
                 >
                   <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 text-xs font-bold"
                     style={{ background: r.bg, color: r.color }}>
-                    {r.label[0]}
+                    {r.avatar}
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-semibold" style={{ color: "#e2e8f0" }}>{r.label}</p>
-                    <p className="text-xs truncate" style={{ color: "#334155" }}>{r.email}</p>
+                    <p className="text-xs truncate" style={{ color: r.color, opacity: 0.7 }}>{r.sublabel}</p>
                   </div>
                   <ArrowRight size={13} style={{ color: r.color, opacity: 0.7 }} />
                 </motion.button>

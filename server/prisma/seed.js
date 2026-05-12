@@ -11,10 +11,10 @@ async function main() {
   await prisma.user.deleteMany();
   await prisma.user.createMany({
     data: [
-      { id: "usr_1", name: "Admin User",    email: "admin@oilintel.com",    password: hashed, role: "superadmin", avatar: "AD", active: true,  createdAt: new Date("2024-01-01") },
-      { id: "usr_2", name: "John Okafor",   email: "j.okafor@oilintel.com", password: hashed, role: "analyst",    avatar: "JO", active: true,  createdAt: new Date("2024-02-15") },
-      { id: "usr_3", name: "Amina Hassan",  email: "a.hassan@oilintel.com", password: hashed, role: "manager",    avatar: "AH", active: true,  createdAt: new Date("2024-03-10") },
-      { id: "usr_4", name: "Samuel Mensah", email: "s.mensah@oilintel.com", password: hashed, role: "sales",      avatar: "SM", active: false, createdAt: new Date("2024-04-01") },
+      { id: "usr_1", name: "Bright Offei",     email: "admin@oilintel.com",    password: hashed, role: "superadmin", avatar: "BO", active: true,  createdAt: new Date("2024-01-01") },
+      { id: "usr_2", name: "John Okafor",      email: "j.okafor@oilintel.com", password: hashed, role: "analyst",    avatar: "JO", active: true,  createdAt: new Date("2024-02-15") },
+      { id: "usr_3", name: "Gloria Gyamfuah", email: "a.hassan@oilintel.com", password: hashed, role: "manager",    avatar: "GG", active: true,  createdAt: new Date("2024-03-10") },
+      { id: "usr_4", name: "Samuel Mensah",    email: "s.mensah@oilintel.com", password: hashed, role: "sales",      avatar: "SM", active: false, createdAt: new Date("2024-04-01") },
     ],
   });
   console.log("  ✓ Users");

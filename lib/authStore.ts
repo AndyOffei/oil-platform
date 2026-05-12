@@ -92,10 +92,10 @@ function persistSession(token: string, user: User) {
 
 // ── Mock auth (fallback when backend unreachable) ─────────────────────────────
 const MOCK_USERS: Record<string, User> = {
-  "admin@oilintel.com":    { id: "usr_1", name: "Admin User",    email: "admin@oilintel.com",    role: "superadmin", avatar: "AD" },
-  "j.okafor@oilintel.com": { id: "usr_2", name: "John Okafor",   email: "j.okafor@oilintel.com", role: "analyst",    avatar: "JO" },
-  "a.hassan@oilintel.com": { id: "usr_3", name: "Amina Hassan",  email: "a.hassan@oilintel.com", role: "manager",    avatar: "AH" },
-  "s.mensah@oilintel.com": { id: "usr_4", name: "Samuel Mensah", email: "s.mensah@oilintel.com", role: "sales",      avatar: "SM" },
+  "admin@oilintel.com":    { id: "usr_1", name: "Bright Offei",    email: "admin@oilintel.com",    role: "superadmin", avatar: "BO" },
+  "j.okafor@oilintel.com": { id: "usr_2", name: "John Okafor",     email: "j.okafor@oilintel.com", role: "analyst",    avatar: "JO" },
+  "a.hassan@oilintel.com": { id: "usr_3", name: "Gloria Gyamfuah", email: "a.hassan@oilintel.com", role: "manager",    avatar: "GG" },
+  "s.mensah@oilintel.com": { id: "usr_4", name: "Samuel Mensah",   email: "s.mensah@oilintel.com", role: "sales",      avatar: "SM" },
 };
 
 function mockLogin(email: string, password: string): { token: string; user: User } {
