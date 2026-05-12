@@ -1,0 +1,79 @@
+// Production schema — PostgreSQL
+// Used by Docker builds (Render, Railway, EC2, Digital Ocean)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  password  String
+  role      String   @default("analyst")
+  avatar    String
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  reports   Report[]
+}
+
+model OilPrice {
+  id    Int    @id @default(autoincrement())
+  date  String @unique
+  brent Float
+  wti   Float
+  opec  Float
+  dubai Float
+}
+
+model ProductionField {
+  id          Int    @id @default(autoincrement())
+  region      String
+  country     String
+  field       String @unique
+  bbl         Int
+  capacity    Int
+  utilization Float
+  lat         Float
+  lng         Float
+}
+
+model Refinery {
+  id          String  @id
+  name        String
+  country     String
+  capacity    Int
+  throughput  Int
+  efficiency  Float
+  status      String  @default("Operational")
+  temp        Int
+  pressure    Int
+  hasAlert    Boolean @default(false)
+}
+
+model Alert {
+  id       String   @id @default(cuid())
+  type     String
+  category String
+  message  String
+  time     DateTime @default(now())
+  resolved Boolean  @default(false)
+}
+
+model Report {
+  id        String   @id @default(cuid())
+  name      String
+  type      String
+  size      String   @default("—")
+  author    String
+  status    String   @default("Generating")
+  downloads Int      @default(0)
+  createdAt DateTime @default(now())
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id])
+}

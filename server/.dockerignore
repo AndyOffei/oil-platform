@@ -1,0 +1,8 @@
+node_modules
+.env
+prisma/oilintel.db
+prisma/oilintel.db-shm
+prisma/oilintel.db-wal
+certs
+*.log
+.git
